@@ -1,0 +1,160 @@
+@import './tailwind.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand palette */
+  --brand-dark-green: #004F2D; /* Primary */
+  --brand-accent-yellow: #F7C30E; /* Accent */
+  --brand-light-bg: #F8F9FA; /* Clean light background */
+
+  /* Map to existing design tokens used by tailwind.config.js */
+  --primary-green: var(--brand-dark-green);
+  --primary-blue: #0ea5e9;
+  --primary-red: #fb0100;
+
+  --text-primary: #374151;
+  --text-light: #6b7280;
+  --text-white: #ffffff;
+  --text-green: var(--brand-dark-green);
+  --text-blue: #1e40af;
+
+  --bg-primary: #ffffff;
+  --bg-light: var(--brand-light-bg);
+  --bg-green: var(--brand-dark-green);
+  --bg-red: #fb0100;
+  --bg-dark-gray: #111827;
+  --bg-overlay-light: rgba(0,0,0,0.25);
+  --bg-overlay-dark: rgba(0,0,0,0.55);
+
+  --border-light: #e5e7eb;
+  --border-medium: #d1d5db;
+  --border-white: #ffffff;
+
+  --header-text: #374151;
+  --header-text-light: #6b7280;
+
+  --button-bg-primary: var(--brand-accent-yellow);
+  --button-bg-danger: #ef4444;
+  --button-text: #111827;
+
+  --footer-bg: var(--brand-dark-green);
+  --link-text: #1e40af;
+  --explore-bg: #ecfeff;
+
+  /* Typography scale */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-xs: 1rem;
+  --line-height-sm: 1.25rem;
+  --line-height-base: 1.5rem;
+  --line-height-md: 1.75rem;
+  --line-height-lg: 2rem;
+  --line-height-xl: 2.25rem;
+  --line-height-2xl: 2.5rem;
+  --line-height-3xl: 2.75rem;
+
+  /* Spacing scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 40px;
+  --spacing-4xl: 48px;
+  --spacing-5xl: 56px;
+  --spacing-6xl: 64px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--brand-light-bg);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Utility animations and interaction effects */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 600ms ease-out both;
+}
+
+.hover-lift {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.hover-glow {
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 0 4px rgba(247, 195, 14, 0.25);
+}
+
+.img-zoom {
+  transition: transform 300ms ease, filter 300ms ease;
+}
+
+.img-zoom:hover {
+  transform: scale(1.04);
+  filter: saturate(1.05);
+}
+
+/* Underline that animates on hover for nav links */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--brand-accent-yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.link-underline:hover::after, .link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
